@@ -68,11 +68,11 @@ int main() {
 	r->x = 30;
 	r->y = 35;
 
-	addItemToEnd(&aList, p);
-	addItemToEnd(&aList, q);
-	addItemToEnd(&aList, r);
+	addItemToEnd(&aList, (ListItem *) p);
+	addItemToEnd(&aList, (ListItem *) q);
+	addItemToEnd(&aList, (ListItem *) r);
 
-	for (Point * c = aList.beginning; c != 0; c = (Point *)c->nextPoint ) {
+	for (Point * c = (Point *) aList.beginning; c != 0; c = (Point *)c->nextPoint ) {
 		printf("\tx: %f, y: %f \n", c->x, c->y);
 	}
 
