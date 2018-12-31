@@ -72,7 +72,7 @@ int main() {
 	addItemToEnd(&aList, (ListItem *) q);
 	addItemToEnd(&aList, (ListItem *) r);
 
-	for (Point * c = (Point *) aList.beginning; c != 0; c = (Point *)c->nextPoint ) {
+	for (Point * c = (Point *) aList.beginning; c; c = (Point *)c->nextPoint ) {
 		printf("\tx: %f, y: %f \n", c->x, c->y);
 	}
 
