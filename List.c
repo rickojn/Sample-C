@@ -29,12 +29,13 @@ bool isEmpty(List * list) {
 void addItemToEnd(List * list, ListItem * listItem) {
 	if (isEmpty(list)) {
 		list->beginning = listItem;
-		list->beginning->next = listItem;
+		list->beginning->next = 0;
 		list->end = listItem;
 	}
 	else {
 		list->end->next = listItem;
 		list->end = listItem;
+		list->end->next = 0;
 	}
 }
 
@@ -49,15 +50,15 @@ struct Point
 	ListItem * nextPoint;
 	float x;
 	float y;
-} typedef Coord;
+} typedef Point;
 
 int main() {
 	List aList;
 	listInit(&aList);
 
-	Coord * p = (Coord *)malloc(sizeof(Coord));
-	Coord * q = (Coord *)malloc(sizeof(Coord));
-	Coord * r = (Coord *)malloc(sizeof(Coord));
+	Point * p = (Point *)malloc(sizeof(Point));
+	Point * q = (Point *)malloc(sizeof(Point));
+	Point * r = (Point *)malloc(sizeof(Point));
 	p->x = 10;
 	p->y = 15;
 
@@ -71,8 +72,8 @@ int main() {
 	addItemToEnd(&aList, q);
 	addItemToEnd(&aList, r);
 
-	for (Coord * c = aList.beginning; c->nextPoint->next != 0; c = c->nextPoint ) {
-		printf("x: %f, y: %f /n", c->x, c->y);
+	for (Point * c = aList.beginning; c != 0; c = (Point *)c->nextPoint ) {
+		printf("\tx: %f, y: %f \n", c->x, c->y);
 	}
 
 	while (!isEmpty(&aList))
