@@ -3,8 +3,7 @@
 
 typedef unsigned char bool;
 
-int * filter(int * arrayToBeFiltered, int size, bool (*keep)(int item)) {
-	int * filteredArray;
+void * filter(int  arrayToBeFiltered[], int size, bool (*keep)(int item), int filteredArray[]) {
 	int j = 0;
 	for (int i = 0; i < size; i++) {
 		if (keep(arrayToBeFiltered[i])) {
@@ -21,9 +20,10 @@ bool keepEven(int number) {
 
 int main() {
 	int myArray[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	int filteredArray[10];
 	int myArraySize = sizeof(myArray) / sizeof(int);
 	bool(*keepEvenPtr)(int) = &keepEven;
-	int * filteredArray = filter(myArray, myArraySize, keepEvenPtr);
+	filter(myArray, myArraySize, keepEvenPtr,filteredArray);
 	for (int i = 0; i < 5; i++) {
 		printf("element %d is: %d\n",i,filteredArray[i]);
 	}
